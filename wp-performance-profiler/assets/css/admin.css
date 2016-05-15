@@ -1,0 +1,224 @@
+/**
+ * Default table styles
+ */
+.icit-profiler-table {
+    width: 100%;
+    margin-bottom: 2em;
+    word-break: break-word;
+}
+.icit-profiler-table th,
+.icit-profiler-table td {
+    text-align: left;
+    padding: 2px 5px;
+}
+.icit-profiler-table-summary tr:nth-child(odd) {
+    background: #E7E7E7;
+}
+.icit-profiler-table .numeric-column {
+    text-align: right;
+}
+
+.icit-profiler-table-zebra th {
+    background: #222;
+    color: #FFF;
+    padding: 5px;
+}
+.icit-profiler-table-zebra .summary th {
+    background: #C7C7C7;
+    color: #222;
+}
+.icit-profiler-table-zebra tr:nth-child(odd) {
+    background: #E7E7E7;
+}
+.icit-profiler-table .summary .toggle-icon:before {
+    content: "\f139";
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    font: normal 20px/1 'dashicons';
+    vertical-align: top;
+}
+.icit-profiler-table .summary.active .toggle-icon:before {
+    content: "\f142";
+}
+.profiler-order-icon {
+    float: right;
+}
+.profiler-order-icon-inactive {
+    opacity: 0.5;
+}
+.icit-profiler-table th a,
+.icit-profiler-table th a:focus {
+    color: inherit;
+    text-decoration: none;
+    outline: none;
+    display: block;
+    -wekbit-box-shadow: none;
+       -moz-box-shadow: none;
+            box-shadow: none;
+}
+
+
+/**
+ * Detailed table
+ */
+.icit-profiler-table-functions .summary:hover {
+    cursor: pointer;
+}
+.icit-profiler-table-functions .detail {
+    display: none;
+}
+
+
+/**
+ * Filters
+ */
+.icit-profiler-filters input,
+.icit-profiler-filters select {
+    width: 100%;
+}
+
+
+/**
+ * Pagination
+ */
+.icit-profiler-pagination {
+    text-align: center;
+}
+.icit-profiler-pagination .page-number {
+    display: inline-block;
+    padding: 5px;
+    height: 1.5em;
+    width: 1.5em;
+    line-height: 1.5em;
+    background: #E7E7E7;
+    color: #222;
+    text-decoration: none;
+    margin: 0 1px;
+}
+.icit-profiler-pagination .page-number-active {
+    background: #222;
+    color: #FFF;
+    font-weight: bold;
+}
+
+/**
+ * Duration bar
+ *
+ * Show a segmented bar to show the relative duration of each task
+ * Consists of 2 parts:
+ *
+ * 1. Graphical bar
+ * 2. Key
+ */
+.duration-bar {
+    width: 100%;
+    height: 50px;
+    background: #DEDEDE;
+}
+.duration-bar .duration {
+    float: left;
+    height: 100%;
+}
+.duration-key {
+    width: 100%;
+    padding: 10px 0;
+    overflow: auto;
+}
+.duration-key .key {
+    float: left;
+    width: 20%;
+}
+.duration-key .key-color {
+    float: left;
+    width: 1em;
+    height: 1em;
+    margin-right: 5px;
+    -wekit-border-radius: 2px;
+      -moz-border-radius: 2px;
+           border-radius: 2px;
+}
+
+.duration-bar .duration-core       { background-color: #98cb65; }
+.duration-bar .duration-themes     { background-color: #f06c53; }
+.duration-bar .duration-plugins    { background-color: #f0ca4d; }
+.duration-bar .duration-mu-plugins { background-color: #00b9d9; }
+.duration-bar .duration-database   { background-color: #9b61a7; }
+
+.duration-key .duration-core .key-color       { background-color: #98cb65; }
+.duration-key .duration-themes .key-color     { background-color: #f06c53; }
+.duration-key .duration-plugins .key-color    { background-color: #f0ca4d; }
+.duration-key .duration-mu-plugins .key-color { background-color: #00b9d9; }
+.duration-key .duration-database .key-color   { background-color: #9b61a7; }
+
+
+/**
+ * Summary boxes
+ */
+.profiler-summary-boxes {
+    overflow: auto;
+    margin: 20px 0;
+}
+.profiler-summary-boxes .profiler-summary-box {
+    width: 15%;
+    float: left;
+    background: #E7E7E7;
+    border: 1px solid #D7D7D7;
+    margin-right: 2%;
+    padding: 10px;
+    text-align: center;
+    -wekit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+           box-sizing: border-box;
+}
+.profiler-summary-boxes .profiler-summary-box:last-child {
+    margin-right: 0;
+}
+.profiler-summary-boxes .profiler-summary-heading {
+    font-weight: bold;
+    display: block;
+    margin-top: 5px;
+}
+.profiler-summary-boxes .profiler-summary-value {
+    font-size: 2em;
+    display: block;
+}
+.profiler-summary-boxes a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/**
+ * Controls
+ */
+.profiler-table-controls {
+    background: #E7E7E7;
+    padding: 10px;
+    border: 1px solid #D7D7D7;
+    margin: 20px 0;
+    overflow: auto;
+}
+.profiler-table-controls-5 .profiler-table-control {
+    float: left;
+    width: 20%;
+}
+
+
+/**
+ * Data tables grid
+ */
+@media screen and (min-width: 1200px) {
+    .profiler-2-col-wrapper {
+        overflow: auto;
+        clear: both;
+        margin-left: -20px;
+    }
+    .profiler-2-col-wrapper .profiler-col {
+        width: 50%;
+        float: left;
+        padding: 0 20px;
+        -wekit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+               box-sizing: border-box;
+    }
+}
