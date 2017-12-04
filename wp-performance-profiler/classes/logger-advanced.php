@@ -2,6 +2,8 @@
 
 namespace ICIT_Performance_Profiler;
 
+use Nimut\TestingFramework\File\FileStreamWrapper3;
+
 /**
  * Advanced Logger
  *
@@ -36,7 +38,11 @@ class Advanced_Logger extends Base_Logger {
         $this->plugin_dir    = wp_normalize_path( WP_PLUGIN_DIR );
         $this->mu_plugin_dir = wp_normalize_path( WPMU_PLUGIN_DIR );
 
+        //https://stackoverflow.com/questions/44473694/natively-profile-multiple-scripts-in-php7
         declare( ticks = 1 );
+
+        require __DIR__ . '/StreamWrapper3.php';
+        FileStreamWrapper3::init(__DIR__);
         register_tick_function( array( $this, 'do_tick' ) );
 
         if( ! defined( 'SAVEQUERIES') ) {
