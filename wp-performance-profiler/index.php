@@ -8,7 +8,7 @@ namespace ICIT_Performance_Profiler;
  * Author:      Damian Gostomski
  * Author URI:  http://interconnectit.com
  * Description: Pinpoint slow parts of your site, so that you can make them faster.
- * Version:     0.3
+ * Version:     0.4
  */
 
 // Setup helper constants
@@ -78,7 +78,7 @@ class Core {
 
         // Register a callback to save and render the data
         if( self::$logger !== null ) {
-            add_action( 'shutdown', array( self::$logger, 'save' ), 999 );
+            add_action( 'shutdown', array( self::$logger, 'save' ), 9999 );
         }
     }
 

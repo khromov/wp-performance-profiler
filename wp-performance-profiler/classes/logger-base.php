@@ -35,9 +35,9 @@ class Base_Logger {
         $data     = array(
             'timestamp' => time(),
             'duration'  => $now - $this->start,
-            'memory'    => memory_get_usage( true ),
             'queries'   => get_num_queries(),
             'request'   => $_SERVER['REQUEST_URI'],
+            'memory'    => Helpers::get_memory_usage(),
             'template'  => $this->template,
             'type'      => icit_profiler_current_request_type(),
             'payload'   => $payload,

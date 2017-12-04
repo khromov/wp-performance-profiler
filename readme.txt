@@ -2,8 +2,8 @@
 Contributors:      gostomski, interconnectit
 Tags:              performance, optimisation, profiler, plugins, speed
 Requires at least: 4.0.1
-Tested up to:      4.3
-Stable tag:        0.3
+Tested up to:      4.9
+Stable tag:        0.4
 License:           GPLv2 or later
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -76,6 +76,10 @@ If you don't want to run the profiler all the time, or only want to log specific
 By using the query string, you will override any default settings.
 
 == Changelog ==
+= 0.4.0 =
+* First new version since fork
+* Fix for memory usage not displaying correctly in certain cases
+* Minor hook tweaks
 
 = 0.3.0 =
 * Added ability to view plugins ordered by average duration, minimum duration, maximum duration and standard deviation
