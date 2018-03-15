@@ -47,16 +47,4 @@ class Helpers {
 
         return isset( $requests[ $request_id ] );
     }
-
-    public static function get_memory_usage() {
-      if ( function_exists( 'memory_get_peak_usage' ) ) {
-        $memory_usage = memory_get_peak_usage();
-      } elseif ( function_exists( 'memory_get_usage' ) ) {
-        $memory_usage = memory_get_usage();
-      } else {
-        $memory_usage = 0;
-      }
-
-      return $memory_usage;
-    }
 }

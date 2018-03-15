@@ -134,74 +134,81 @@ class Advanced_Logger extends Base_Logger {
         // Although this information could be computed from the function calls when doign reporting
         // It would suffer a huge performance hit due to the large number of records there
         // And this also allows for an intermediate level of logging in the future, where we just store plugin level stats
-        $table  = $wpdb->prefix . 'profiler_plugins';
-        $schema = array(
-            'request_id' => '%d',
-            'plugin'     => '%s',
-            'count'      => '%d',
-            'duration'   => '%f',
-        );
-        $data   = array();
-
-        foreach( $this->stats as $plugin ) {
-            $data[] = array(
-                'request_id' => $request_id,
-                'plugin'     => $plugin['plugin'],
-                'count'      => $plugin['count'],
-                'duration'   => $plugin['duration'],
+        if ( $this->stats ) {
+            $table  = $wpdb->prefix . 'profiler_plugins';
+            $schema = array(
+                'request_id' => '%d',
+                'plugin'     => '%s',
+                'count'      => '%d',
+                'duration'   => '%f',
             );
-        }
-
-        $this->bulk_insert( $table, $schema, $data );
-
-        // We'll also store all the database queries and link them to this request
-        $table  = $wpdb->prefix . 'profiler_queries';
-        $schema = array(
-            'request_id'     => '%d',
-            'duration'       => '%f',
-            'plugin'         => '%s',
-            'the_query'      => '%s',
-            'stack'          => '%s',
-        );
-        $data   = array();
-        foreach( $wpdb->queries as $query ) {
-            $data[] = array(
-                'request_id' => $request_id,
-                'duration'   => $query[1] * 1000,
-                'plugin'     => $this->get_plugin_from_query( $query[0] ),
-                'the_query'  => $query[0],
-                'stack'      => $query[2],
-            );
-
-            $this->time_database += $query[1] * 1000;
-        }
-
-        $this->bulk_insert( $table, $schema, $data );
-
-        // Then, we'll store the detailed logs for each function
-        $table  = $wpdb->prefix . 'profiler_functions';
-        $schema = array(
-            'request_id' => '%d',
-            'plugin'     => '%s',
-            'function'   => '%s',
-            'count'      => '%d',
-            'duration'   => '%f',
-        );
-        $data   = array();
-
-        foreach( $this->stats as $plugin ) {
-            foreach( $plugin['functions'] as $function ) {
+            $data   = array();
+            foreach ( $this->stats as $plugin ) {
                 $data[] = array(
                     'request_id' => $request_id,
                     'plugin'     => $plugin['plugin'],
-                    'function'   => $function['function'],
-                    'count'      => $function['count'],
-                    'duration'   => $function['duration'],
+                    'count'      => $plugin['count'],
+                    'duration'   => $plugin['duration'],
                 );
+            }
+            if ( $data ) {
+                $this->bulk_insert( $table, $schema, $data );
             }
         }
 
-        $this->bulk_insert( $table, $schema, $data );
+        // We'll also store all the database queries and link them to this request
+        if ( $wpdb->queries ) {
+            $table  = $wpdb->prefix . 'profiler_queries';
+            $schema = array(
+                'request_id' => '%d',
+                'duration'   => '%f',
+                'plugin'     => '%s',
+                'the_query'  => '%s',
+                'stack'      => '%s',
+            );
+            $data   = array();
+            foreach ( $wpdb->queries as $query ) {
+                $data[] = array(
+                    'request_id' => $request_id,
+                    'duration'   => $query[1] * 1000,
+                    'plugin'     => $this->get_plugin_from_query( $query[0] ),
+                    'the_query'  => $query[0],
+                    'stack'      => $query[2],
+                );
+
+                $this->time_database += $query[1] * 1000;
+            }
+            if ( $data ) {
+                $this->bulk_insert( $table, $schema, $data );
+            }
+        }
+
+        // Then, we'll store the detailed logs for each function
+        if ( $this->stats ) {
+            $table  = $wpdb->prefix . 'profiler_functions';
+            $schema = array(
+                'request_id' => '%d',
+                'plugin'     => '%s',
+                'function'   => '%s',
+                'count'      => '%d',
+                'duration'   => '%f',
+            );
+            $data   = array();
+            foreach ( $this->stats as $plugin ) {
+                foreach ( $plugin['functions'] as $function ) {
+                    $data[] = array(
+                        'request_id' => $request_id,
+                        'plugin'     => $plugin['plugin'],
+                        'function'   => $function['function'],
+                        'count'      => $function['count'],
+                        'duration'   => $function['duration'],
+                    );
+                }
+            }
+            if ( $data ) {
+                $this->bulk_insert( $table, $schema, $data );
+            }
+        }
 
         // Insert the detailed information for this request
         $table = $wpdb->prefix . 'profiler_details';

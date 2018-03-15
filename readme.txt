@@ -2,8 +2,8 @@
 Contributors:      gostomski, interconnectit
 Tags:              performance, optimisation, profiler, plugins, speed
 Requires at least: 4.0.1
-Tested up to:      4.9
-Stable tag:        0.4
+Tested up to:      4.3
+Stable tag:        0.3
 License:           GPLv2 or later
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,6 +20,9 @@ The WordPress Performance Profiler will monitor the performance of your site and
 * Track the best and worst performing requests for a given template or URL
 
 == Installation ==
+
+Please note that you will need PHP 5.3 or above to be able to run this plugin
+and we recommend you are using production sites on at least PHP 5.5 or above.
 
 To install the WordPress Performance Profiler as a must-use plugin (recommended):
 
@@ -70,16 +73,12 @@ Yes, although this plugin is primarily meant as a developer tool - so is most be
 
 If you are going to run it in a production environment, it's recommended to set the advanced logging level to a very low number, and the basic level to a low-medium number. With a large amount of traffic, this will still capture a lot of data with minimal overhead. If you run it with higher values (especially for the advanced logging), you'll need to periodically purge the database in the maintenance tab.
 
-= Can I manually log requests =
+= Can I manually log requests? =
 
 If you don't want to run the profiler all the time, or only want to log specific requests, you can manually log them by adding `?profiler` to the query string. This will enable the advanced profiler, but if you want just basic logging, add `?profiler=basic`.
 By using the query string, you will override any default settings.
 
 == Changelog ==
-= 0.4.0 =
-* First new version since fork
-* Fix for memory usage not displaying correctly in certain cases
-* Minor hook tweaks
 
 = 0.3.0 =
 * Added ability to view plugins ordered by average duration, minimum duration, maximum duration and standard deviation

@@ -6,11 +6,11 @@
  * Author:      Damian Gostomski
  * Author URI:  http://interconnectit.com
  * Description: Pinpoint slow parts of your site, so that you can make them faster.
- * Version:     0.3
+ * Version:     0.3.2
  *
  * This file exists to make installing this as a mu-plugin as easy as possible, and also works for regular plugins.
  */
 
-! defined( 'ICIT_PERFORMANCE_PROFILER_LOADER_FILE' ) && define( 'ICIT_PERFORMANCE_PROFILER_LOADER_FILE', plugin_basename( __FILE__ ) );
+!defined('ICIT_PERFORMANCE_PROFILER_LOADER_FILE') && define('ICIT_PERFORMANCE_PROFILER_LOADER_FILE', plugin_basename(__FILE__));
 
-require_once 'wp-performance-profiler/index.php';
+require_once __DIR__ . '/wp-performance-profiler/wp-performance-profiler.php';

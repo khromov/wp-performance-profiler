@@ -1,0 +1,16 @@
+{
+     "name": "interconnectit/plugin-icit-profiler",
+     "type": "wordpress-plugin",
+     "homepage": "https://github.com/interconnectit/plugin-icit-profiler",
+     "authors": [
+         {
+             "name": "interconnect/it",
+             "email": "support@interconnectit.com",
+             "homepage": "https://interconnectit.com/"
+         }
+     ],
+     "require": {
+         "php": ">=5.6",
+         "composer/installers": "~1.0"
+     }
+}
