@@ -2,15 +2,6 @@
 
 namespace ICIT_Performance_Profiler;
 
-/**
- * Plugin Name: WordPress Performance Profiler (plugin version)
- * Plugin URI:  http://interconnectit.com
- * Author:      Damian Gostomski
- * Author URI:  http://interconnectit.com
- * Description: Pinpoint slow parts of your site, so that you can make them faster.
- * Version:     0.3
- */
-
 // Setup helper constants
 ! defined( 'ICIT_PERFORMANCE_PROFILER_DIR' ) && define( 'ICIT_PERFORMANCE_PROFILER_DIR', trailingslashit( dirname( __FILE__ ) ) );
 ! defined( 'ICIT_PERFORMANCE_PROFILER_URL' ) && define( 'ICIT_PERFORMANCE_PROFILER_URL', plugin_dir_url( __FILE__ ) );

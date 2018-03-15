@@ -570,6 +570,16 @@ class Admin {
             </div>
             <?php
         endif;
+
+        //
+        if ( ( version_compare( PHP_VERSION, '7.0.0', '>=' ) && version_compare( PHP_VERSION, '7.2.0', '<' ) ) || defined( 'HHVM_VERSION' ) ): ?>
+            <div class="notice notice-error">
+                <p>
+                    <strong>Oops!</strong>
+                    WP Performance Profiler doesn't work with PHP7.0 or 7.1 or HHVM.
+                </p>
+            </div>
+        <?php endif;
     }
 
     private function is_tab_active( $tab ) {
